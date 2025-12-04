@@ -64,22 +64,24 @@ class Day04Test {
 
         int countRolls() {
             return
-                    (int) IntStream.range(0, getWidth()).mapToObj(x -> IntStream.range(0, getHeight())
-                                    .mapToObj(y -> new Coord(x, y)))
-                            .flatMap(identity()).filter(a -> checkRoll(a.x, a.y)).count();
+                    (int) streamCoord().filter(a -> checkRoll(a.x, a.y)).count();
         }
 
         List<Coord> checkMoreThanFour() {
-            return IntStream.range(0, getWidth())
-                    .mapToObj(x -> IntStream.range(0, getHeight())
-                            .mapToObj(y -> new Coord(x, y)))
-                    .flatMap(identity()).filter(c -> countNeighbours(c) <= 4).toList();
+            return streamCoord().filter(c -> countNeighbours(c) <= 4).toList();
         }
 
-        void remove(Coord r) {
+        void removeRoll(Coord r) {
             var row = grid.get(r.x).toCharArray();
             row[r.y] = '.';
             grid.set(r.x, new String(row));
+        }
+
+        Stream<Coord> streamCoord() {
+            return IntStream.range(0, getWidth())
+                    .mapToObj(x -> IntStream.range(0, getHeight())
+                            .mapToObj(y -> new Coord(x, y)))
+                    .flatMap(identity());
         }
     }
 
@@ -95,7 +97,7 @@ class Day04Test {
         for (var toRemove = grid.checkMoreThanFour(); !toRemove.isEmpty(); toRemove = grid.checkMoreThanFour()) {
             System.out.println("Remove %d roll of paper".formatted(toRemove.size()));
             for (var r : toRemove) {
-                grid.remove(r);
+                grid.removeRoll(r);
             }
         }
         var endRollCount = grid.countRolls();
