@@ -22,7 +22,7 @@ class Day05Test {
         assertEquals(Integer.parseInt(expected), result);
     }
 
-    class Range implements Comparable<Range> {
+    static class Range implements Comparable<Range> {
         private long start;
         private long end;
 
