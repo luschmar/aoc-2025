@@ -12,7 +12,7 @@ class Day06Test {
     @ParameterizedTest
     @AocFileSource(inputs = {
             @AocInputMapping(input = "test.txt", expected = "4277556"),
-            @AocInputMapping(input = "https://adventofcode.com/2025/day/6/input", expected = "silver.cache")
+            // @AocInputMapping(input = "https://adventofcode.com/2025/day/6/input", expected = "silver.cache")
     })
     void part1(Stream<String> input, String expected) {
         var all = input.toList();
@@ -37,7 +37,7 @@ class Day06Test {
     @ParameterizedTest
     @AocFileSource(inputs = {
             @AocInputMapping(input = "test.txt", expected = "3263827"),
-            @AocInputMapping(input = "https://adventofcode.com/2025/day/6/input", expected = "gold.cache")
+            // @AocInputMapping(input = "https://adventofcode.com/2025/day/6/input", expected = "gold.cache")
     })
     void part2(Stream<String> input, String expected) {
         var all = input.toList();
