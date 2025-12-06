@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class Day06Test {
+class Day11Test {
     @ParameterizedTest
     @AocFileSource(inputs = {
             @AocInputMapping(input = "test.txt", expected = "357"),
